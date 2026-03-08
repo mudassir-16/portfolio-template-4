@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { profileData } from "@/data/mockData";
+import { Calendar } from "lucide-react";
 
 export default function Experience() {
     return (
@@ -19,9 +20,10 @@ export default function Experience() {
                             className="relative pl-8 border-l border-accent-gold/30"
                         >
                             <div className="absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full bg-accent-gold" />
-                            <p className="text-accent-gold text-xs font-bold tracking-[0.2em] mb-2 uppercase">
-                                {edu.duration}
-                            </p>
+                            <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-white/5 border border-white/5 w-fit mb-4">
+                                <Calendar size={12} className="text-accent-gold opacity-40" />
+                                <span className="text-[10px] text-accent-gold font-bold uppercase tracking-widest">{edu.duration}</span>
+                            </div>
                             <h3 className="text-2xl font-serif font-bold mb-1">{edu.degree}</h3>
                             <p className="text-lg text-white/80 mb-2">{edu.institution}</p>
                             <div className="inline-block px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-accent-gold">

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { profileData as mockProfileData } from "@/data/mockData";
 import { Profile, Education, Leadership } from "@/lib/db_service";
+import { Calendar } from "lucide-react";
 
 export default function About({
     profile,
@@ -77,9 +78,12 @@ export default function About({
                                             <div className="absolute left-[-5px] top-1.5 w-2 h-2 rounded-full bg-accent-gold/40" />
                                             <p className="text-sm font-bold text-white">{edu.degree}</p>
                                             <p className="text-xs text-white/40">{edu.institution}</p>
-                                            <div className="flex gap-4 mt-2">
-                                                <span className="text-[10px] text-accent-gold font-bold uppercase tracking-widest">{edu.duration}</span>
-                                                {edu.cgpa && <span className="text-[10px] text-white/20 font-bold uppercase">CGPA: {edu.cgpa}</span>}
+                                            <div className="flex items-center gap-3 mt-2">
+                                                <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-white/5 border border-white/5">
+                                                    <Calendar size={10} className="text-accent-gold opacity-40" />
+                                                    <span className="text-[9px] text-accent-gold font-bold uppercase tracking-widest">{edu.duration || 'Dec 2024 to May 2026'}</span>
+                                                </div>
+                                                {edu.cgpa && <span className="text-[9px] text-white/20 font-bold uppercase bg-white/5 px-2 py-1 rounded-md">CGPA: {edu.cgpa}</span>}
                                             </div>
                                         </div>
                                     ))}
