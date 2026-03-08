@@ -1,0 +1,187 @@
+﻿
+> p@1.0.0 build
+> next build
+
+npm : ΓÜá Warning: Next.js 
+inferred your workspace 
+root, but it may not be 
+correct.
+At line:1 char:1
++ npm run build 2>&1 | 
+Out-File -FilePath 
+build_error_v2.txt -Encoding 
+ ...
++ ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (ΓÜá War  
+  ning: Ne...not be correc   
+ t.:String) [], RemoteExc    
+eption
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+ We detected multiple 
+lockfiles and selected the 
+directory of 
+C:\Users\MOHAMMED 
+MUZAMMIL\package-lock.json 
+as the root directory.
+ To silence this warning, 
+set `turbopack.root` in your 
+Next.js config, or consider 
+removing one of the 
+lockfiles if it's not needed.
+   See https://nextjs.org/doc
+s/app/api-reference/config/ne
+xt-config-js/turbopack#root-d
+irectory for more 
+information.
+ Detected additional 
+lockfiles: 
+   * C:\Users\MOHAMMED MUZAMM
+IL\Documents\P\package-lock.j
+son
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+Error: Cannot apply unknown 
+utility class 
+`bg-card-dark/40`. Are you 
+using CSS modules or similar 
+and missing `@reference`? htt
+ps://tailwindcss.com/docs/fun
+ctions-and-directives#referen
+ce-directive
+    [2m[at 
+onInvalidCandidate 
+(C:\Users\MOHAMMED MUZAMMIL\D
+ocuments\P\node_modules\tailw
+indcss\dist\lib.js:21:1314)]
+[0m
+    [2m[at Ee 
+(C:\Users\MOHAMMED MUZAMMIL\D
+ocuments\P\node_modules\tailw
+indcss\dist\lib.js:16:37066)]
+[0m
+    [2m[at 
+C:\Users\MOHAMMED MUZAMMIL\Do
+cuments\P\node_modules\tailwi
+ndcss\dist\lib.js:21:355][0m
+    [2m[at Pr 
+(C:\Users\MOHAMMED MUZAMMIL\D
+ocuments\P\node_modules\tailw
+indcss\dist\lib.js:3:1733)][
+0m
+    [2m[at _ 
+(C:\Users\MOHAMMED MUZAMMIL\D
+ocuments\P\node_modules\tailw
+indcss\dist\lib.js:3:1377)][
+0m
+    [2m[at Te 
+(C:\Users\MOHAMMED MUZAMMIL\D
+ocuments\P\node_modules\tailw
+indcss\dist\lib.js:21:172)][
+0m
+    [2m[at pn 
+(C:\Users\MOHAMMED MUZAMMIL\D
+ocuments\P\node_modules\tailw
+indcss\dist\lib.js:38:294)][
+0m
+    [2m[at process.processTi
+cksAndRejections (node:intern
+al/process/task_queues:95:5)]
+[0m
+    [2m[at async dn 
+(C:\Users\MOHAMMED MUZAMMIL\D
+ocuments\P\node_modules\tailw
+indcss\dist\lib.js:38:631)][
+0m
+    [2m[at async Xr 
+(C:\Users\MOHAMMED MUZAMMIL\D
+ocuments\P\node_modules\@tail
+windcss\node\dist\index.js:10
+:3417)][0m
+
+> Build error occurred
+Error: Turbopack build 
+failed with 1 errors:
+./Documents/P/src/app/globals
+.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: 
+C:\Users\MOHAMMED MUZAMMIL\Do
+cuments\P\src\app\globals.css
+:1:1: Cannot apply unknown 
+utility class 
+`bg-card-dark/40`. Are you 
+using CSS modules or similar 
+and missing `@reference`? htt
+ps://tailwindcss.com/docs/fun
+ctions-and-directives#referen
+ce-directive
+    at Input.error (Documents
+/P/node_modules/postcss/lib/i
+nput.js:135:16) 
+[C:\Users\MOHAMMED MUZAMMIL\D
+ocuments\P\.next\build\chunks
+\02a19_6e4dbcfa._.js:4651:22]
+    at Root.error (Documents/
+P/node_modules/postcss/lib/no
+de.js:146:32) 
+[C:\Users\MOHAMMED MUZAMMIL\D
+ocuments\P\.next\build\chunks
+\02a19_6e4dbcfa._.js:928:38]
+    [at Object.Once 
+(C:\Users\MOHAMMED MUZAMMIL\D
+ocuments\P\node_modules\@tail
+windcss\postcss\dist\index.js
+:10:6913)]
+    [at process.processTicksA
+ndRejections (node:internal/p
+rocess/task_queues:95:5)]
+    at async 
+LazyResult.runAsync (Document
+s/P/node_modules/postcss/lib/
+lazy-result.js:293:11) 
+[C:\Users\MOHAMMED MUZAMMIL\D
+ocuments\P\.next\build\chunks
+\02a19_6e4dbcfa._.js:6214:21]
+    at async transform (turbo
+pack:///[turbopack-node]/tran
+sforms/postcss.ts:70:34) 
+[C:\Users\MOHAMMED MUZAMMIL\D
+ocuments\P\.next\build\chunks
+\[root-of-the-server]__509fe7
+44._.js:146:36]
+    at async run (turbopack:/
+//[turbopack-node]/ipc/evalua
+te.ts:92:23) 
+[C:\Users\MOHAMMED MUZAMMIL\D
+ocuments\P\.next\build\chunks
+\[root-of-the-server]__2f0f27
+a0._.js:443:31]
+
+Import trace:
+  Client Component Browser:
+    ./Documents/P/src/app/glo
+bals.css [Client Component 
+Browser]
+    ./Documents/P/src/app/lay
+out.tsx [Server Component]
+
+
+    at async transform (turbo
+pack:///[turbopack-node]/tran
+sforms/postcss.ts:70:34) 
+[C:\Users\MOHAMMED MUZAMMIL\D
+ocuments\P\.next\build\chunks
+\[root-of-the-server]__509fe7
+44._.js:146:36])
+    at async run (turbopack:/
+//[turbopack-node]/ipc/evalua
+te.ts:92:23) 
+[C:\Users\MOHAMMED MUZAMMIL\D
+ocuments\P\.next\build\chunks
+\[root-of-the-server]__2f0f27
+a0._.js:443:31])
