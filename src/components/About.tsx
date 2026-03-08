@@ -100,11 +100,18 @@ export default function About({
 
                             <a
                                 href={data.resume_url || "#"}
+                                download={data.resume_url ? `${data.name.replace(/\s+/g, '_')}_Resume` : undefined}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="mt-12 group flex items-center gap-4 text-xs font-bold tracking-[0.3em] uppercase w-fit"
+                                className={`mt-12 group flex items-center gap-4 text-xs font-bold tracking-[0.3em] uppercase w-fit transition-all ${!data.resume_url ? 'opacity-50 cursor-not-allowed' : 'hover:text-accent-gold'}`}
+                                onClick={(e) => {
+                                    if (!data.resume_url) {
+                                        e.preventDefault();
+                                        alert("Please upload your resume in the Admin Dashboard first!");
+                                    }
+                                }}
                             >
-                                <span>{data.resume_url ? 'View Resume' : 'Download Resume'}</span>
+                                <span>Download Resume</span>
                                 <div className="w-12 h-[1px] bg-white/20 group-hover:w-20 group-hover:bg-accent-red transition-all" />
                             </a>
                         </div>
