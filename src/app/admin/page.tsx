@@ -20,7 +20,7 @@ import {
     deleteLeadership,
     uploadFile
 } from '@/lib/db_service';
-import { LogOut, Save, Plus, Trash2, Image as ImageIcon, Loader2, GraduationCap, Briefcase, Code, Star } from 'lucide-react';
+import { LogOut, Save, Plus, Trash2, Image as ImageIcon, Loader2, GraduationCap, Briefcase, Code, Star, FileText } from 'lucide-react';
 
 // Image Upload Helper Component
 const ImageUploader = ({ onUpload, initialUrl }: { onUpload: (url: string) => void, initialUrl: string }) => {
@@ -52,6 +52,46 @@ const ImageUploader = ({ onUpload, initialUrl }: { onUpload: (url: string) => vo
                 {uploading ? <Loader2 className="animate-spin text-accent-gold" /> : <ImageIcon className="text-white" />}
             </div>
             <input type="file" ref={fileRef} onChange={handleFileChange} className="hidden" accept="image/*" />
+        </div>
+    );
+};
+
+// Universal File Upload Component
+const FileUploader = ({ onUpload, initialUrl, label }: { onUpload: (url: string) => void, initialUrl?: string, label: string }) => {
+    const [uploading, setUploading] = useState(false);
+    const fileRef = useRef<HTMLInputElement>(null);
+
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        setUploading(true);
+        try {
+            const fileName = `${Date.now()}-${file.name.replace(/\s/g, '_')}`;
+            const publicUrl = await uploadFile(file, fileName);
+            onUpload(publicUrl);
+        } catch (err: any) {
+            alert('Upload failed: ' + err.message);
+        } finally {
+            setUploading(false);
+        }
+    };
+
+    return (
+        <div
+            onClick={() => fileRef.current?.click()}
+            className="group cursor-pointer glass-card p-6 flex flex-col items-center justify-center border-white/5 hover:border-accent-gold/40 transition-all gap-4"
+        >
+            {uploading ? (
+                <Loader2 className="animate-spin text-accent-gold" size={32} />
+            ) : (
+                <FileText className={initialUrl ? 'text-accent-gold' : 'text-white/20'} size={32} />
+            )}
+            <div className="text-center">
+                <p className="text-[10px] uppercase font-bold tracking-[0.2em]">{label}</p>
+                <p className="text-[8px] text-white/40 mt-1">{initialUrl ? 'Document Linked' : 'No File Uploaded'}</p>
+            </div>
+            <input type="file" ref={fileRef} onChange={handleFileChange} className="hidden" />
         </div>
     );
 };
@@ -233,6 +273,12 @@ export default function AdminPage() {
                                         <ImageUploader
                                             initialUrl={data.profile.profile_image}
                                             onUpload={(url) => setData({ ...data, profile: { ...data.profile, profile_image: url } })}
+                                        />
+                                        <label className="text-[10px] uppercase font-bold tracking-widest text-white/40 mt-8 block">Professional CV</label>
+                                        <FileUploader
+                                            label="Resume / Portfolio"
+                                            initialUrl={data.profile.resume_url}
+                                            onUpload={(url) => setData({ ...data, profile: { ...data.profile, resume_url: url } })}
                                         />
                                     </div>
                                     <div className="md:col-span-2 space-y-6">

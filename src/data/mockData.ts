@@ -2,6 +2,7 @@ export const profileData = {
     name: "Mohammed Mudassir",
     titles: ["B.Tech Student", "AI Enthusiast", "Full-Stack Developer"],
     bio: "Mohammed Mudassir is a B.Tech Information Technology student at Vignan Institute of Technology & Science. He is passionate about AI-powered solutions, full-stack development, and innovative problem-solving.",
+    resume_url: "",
     achievements: [
         {
             title: "2nd Prize – CognitiveX: GenAI Hackathon 2025",

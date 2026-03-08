@@ -98,10 +98,15 @@ export default function About({
                                 </div>
                             </div>
 
-                            <button className="mt-12 group flex items-center gap-4 text-xs font-bold tracking-[0.3em] uppercase">
-                                <span>Download Resume</span>
+                            <a
+                                href={data.resume_url || "#"}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mt-12 group flex items-center gap-4 text-xs font-bold tracking-[0.3em] uppercase w-fit"
+                            >
+                                <span>{data.resume_url ? 'View Resume' : 'Download Resume'}</span>
                                 <div className="w-12 h-[1px] bg-white/20 group-hover:w-20 group-hover:bg-accent-red transition-all" />
-                            </button>
+                            </a>
                         </div>
                     </motion.div>
                 </div>

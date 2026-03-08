@@ -5,6 +5,7 @@ export interface Profile {
     name: string;
     bio: string;
     profile_image: string;
+    resume_url?: string;
 }
 
 export interface Achievement {
@@ -113,7 +114,7 @@ export const getPortfolioData = async () => {
         ]);
 
         return {
-            profile: profile || { id: '', name: 'Guest', bio: 'Update your bio in the dashboard', profile_image: '/images/m2.png' },
+            profile: profile || { id: '', name: 'Guest', bio: 'Update your bio in the dashboard', profile_image: '/images/m2.png', resume_url: '' },
             achievements: achievements || [],
             skills: {
                 technical: (skills || []).filter(s => s.type === 'technical'),
