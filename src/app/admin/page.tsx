@@ -20,7 +20,7 @@ import {
     deleteLeadership,
     uploadFile
 } from '@/lib/db_service';
-import { LogOut, Save, Plus, Trash2, Image as ImageIcon, Loader2, GraduationCap, Briefcase, Code, Star, FileText } from 'lucide-react';
+import { LogOut, Save, Plus, Trash2, Image as ImageIcon, Loader2, GraduationCap, Briefcase, Code, Star, FileText, Menu, X } from 'lucide-react';
 
 // Image Upload Helper Component
 const ImageUploader = ({ onUpload, initialUrl }: { onUpload: (url: string) => void, initialUrl: string }) => {
@@ -104,6 +104,7 @@ export default function AdminPage() {
     const [password, setPassword] = useState('');
     const [authLoading, setAuthLoading] = useState(false);
     const [activeTab, setActiveTab] = useState('identity');
+    const [sidebarOpen, setSidebarOpen] = useState(false);
 
     useEffect(() => {
         const checkUser = async () => {
@@ -222,9 +223,20 @@ export default function AdminPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-[#1a0202] text-white flex">
+        <div className="min-h-screen bg-[#1a0202] text-white flex flex-col md:flex-row">
+            {/* Mobile Header */}
+            <header className="md:hidden fixed top-0 left-0 w-full h-16 bg-[#1a0202] border-b border-white/5 z-[60] flex items-center justify-between px-6">
+                <span className="editorial-title text-xl italic">Editor.</span>
+                <button
+                    onClick={() => setSidebarOpen(!sidebarOpen)}
+                    className="p-2 text-white/60 hover:text-accent-gold transition-colors"
+                >
+                    {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
+                </button>
+            </header>
+
             {/* Sidebar Navigation */}
-            <aside className="w-72 border-r border-white/5 flex flex-col p-8 fixed h-full bg-[#1a0202]">
+            <aside className={`w-72 border-r border-white/5 flex flex-col p-8 fixed md:sticky top-0 h-screen bg-[#1a0202] z-50 transition-transform duration-300 md:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                 <div className="mb-12">
                     <h1 className="editorial-title text-3xl italic">Editor.</h1>
                     <p className="text-[9px] uppercase tracking-widest text-white/40 mt-1 font-bold">Authenticated Profile Management</p>
@@ -234,7 +246,10 @@ export default function AdminPage() {
                     {sections.map(section => (
                         <button
                             key={section.id}
-                            onClick={() => setActiveTab(section.id)}
+                            onClick={() => {
+                                setActiveTab(section.id);
+                                if (window.innerWidth < 768) setSidebarOpen(false);
+                            }}
                             className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl transition-all font-sans text-xs tracking-widest font-bold uppercase ${activeTab === section.id
                                 ? 'bg-accent-gold text-black'
                                 : 'bg-transparent text-white/60 hover:text-white hover:bg-white/5'
@@ -254,8 +269,16 @@ export default function AdminPage() {
                 </button>
             </aside>
 
+            {/* Overlay for mobile sidebar */}
+            {sidebarOpen && (
+                <div
+                    className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+                    onClick={() => setSidebarOpen(false)}
+                />
+            )}
+
             {/* Main Content Areas */}
-            <main className="flex-1 ml-72 p-16 pb-32 max-w-7xl">
+            <main className="flex-1 p-6 md:p-16 mt-16 md:mt-0 pb-32 max-w-7xl">
                 <div className="max-w-4xl mx-auto">
 
                     {/* Identity Tab */}
