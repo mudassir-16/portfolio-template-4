@@ -37,8 +37,8 @@ export default function Contact({ profile }: { profile?: Profile | null }) {
                         <div className="flex flex-wrap gap-6">
                             {[
                                 { icon: Instagram, href: "https://instagram.com/mudassir.1604", label: "Instagram" },
-                                { icon: Linkedin, href: "https://linkedin.com/in/mohammedmudassir", label: "LinkedIn" },
-                                { icon: Github, href: "https://github.com/mohammedmudassir", label: "GitHub" },
+                                { icon: Linkedin, href: "https://www.linkedin.com/in/mohammed-mudassir-82882933a/", label: "LinkedIn" },
+                                { icon: Github, href: "https://github.com/mudassir-16", label: "GitHub" },
                                 { icon: Mail, href: "mailto:mohammadmudassir1604@gmail.com", label: "Email" },
                             ].map((social, i) => (
                                 <motion.a
